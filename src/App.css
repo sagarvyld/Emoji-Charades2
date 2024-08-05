@@ -24,6 +24,8 @@ body, html {
  
 }
 .you_got_a{
+  margin-top: -15px;
+  margin-bottom: 63px;
   color: var(--Neutral-Light, #FFF);
   text-align: center;
   font-feature-settings: 'clig' off, 'liga' off;
@@ -46,16 +48,16 @@ line-height: 0%;
 
 .Lie_Information {
   margin-bottom: -10px;
-  width: 88vw;
-  height: 8vh;
+  width: 70vw;
+  height: 7vh;
   flex-shrink: 0;
-  border-radius: var(--x-Large, 62.4375rem);
+  border-radius: 2px var(--large, 12px) var(--large, 12px) var(--large, 12px);
   background: var(--Dark-Dark--70, #384353);
   display: flex;
 
   align-items: center;
   position: absolute;
-  top: 53vh;
+  top: 59vh;
 }
 .emoji-container {
   max-width: 315px;
@@ -70,9 +72,32 @@ line-height: 0%;
   display: inline-block; 
 }
 .SpotPage_Submit p{
-  transition: all 0.5s ease-in-out; 
   padding: 0px;
   margin: 0px;
+}
+.SpotPage_Submit2 p{
+  color: var(--Dark-Dark--60, #526175);
+  padding: 0px;
+  margin: 0px;
+}
+.SpotPage_Submit2{
+  color: var(--Neutral-Rich-Dark, #090909);
+font-family: Gilroy;
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: 100%; 
+  display: flex;
+  width: 60vw;
+  padding: 0.9375rem 2rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  border: 0px;
+  border-radius: var(--x-Large, 999px);
+  background: var(--Dark-Dark--70, #384353);
+  position: fixed;
+  bottom: 7vh;
 }
 .back_button{
   background:transparent;
@@ -88,7 +113,7 @@ line-height: 0%;
 }
 .skip_container{
   position: absolute;
-  margin-left: -27px;
+  width: 100vw;
 }
 .the_skip_box{
 
@@ -251,6 +276,20 @@ font-style: normal;
 font-weight: 900;
 line-height: 100%;
 }
+.header_guessbox_it{
+  z-index: 3;
+  display: flex;
+}
+.random button{
+  background-color: transparent;
+  border: none;
+}
+.random{
+  position: absolute;
+  z-index: 3;
+  top: -5px;
+  left: 284px;
+}
 .svg_star{
   margin-right: 40px;
   margin-top: 30px;
@@ -258,12 +297,12 @@ line-height: 100%;
 ._notsend_width{
   transition: width 0.5s ease-in-out, height 0.5s ease-in-out; 
   width: 350px;
-  height: 206px;
+  height: 166px;
 }
 ._send_width{
   transition: width 0.5s ease-in-out, height 0.5s ease-in-out; 
-  width: 360px;
-  height: 297px;
+  width: 350px;
+  height: 207px;
 }
 ._realsvg{
   transition: width 0.5s ease-in-out, height 0.5s ease-in-out; 
@@ -272,7 +311,10 @@ line-height: 100%;
   border-radius: var(--large, 12px);
   background: var(--Accent-Accent--01-Accent-01--Dark, #6B36FF);
 }
-
+.answer_box{
+  margin-top:285px !important;
+  gap: 26px !important;
+}
 .svg_answer {
   height: 325px;
 }
@@ -396,7 +438,15 @@ background: var(--Primary-Primary-100, #C6FF00);
 .display_game{
   display: none;
 }
-
+.User_name{
+  color: var(--Dark-Dark--50, #79889D);
+font-feature-settings: 'liga' off, 'clig' off;
+font-family: Gilroy;
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: 120%; /* 16.8px */
+}
 .User_picture {
   display: flex;
   justify-content: center;
@@ -405,26 +455,38 @@ background: var(--Primary-Primary-100, #C6FF00);
 }
 .guess_answer textarea:focus {
   border-radius: var(--large, 12px);
-border: 1px solid var(--Dark-Dark--100, #0E1928);
-background: var(--Light-Light--100, #FFF);
-box-shadow: 0px 2px 0px 0px #000;
+border: 0.724px solid var(--Primary-Primary-100, #C6FF00);
+background: var(--Dark-Dark--90, #1D2939);
 outline: none;
 }
-
+.send1{
+  border-radius: var(--x-Large, 999px);
+background: var(--Dark-Dark--70, #384353);
+}
 
 .User_text {
-  padding-left: 3px;
-  color: var(--Neutral-Light, #fff);
-  font-feature-settings: "clig" off, "liga" off;
-  font-family: "Gilroy";
-  font-size: 0.75rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 120%;
+  color: var(--Light-Light--80, #E0E7F1);
+font-feature-settings: 'liga' off, 'clig' off;
+font-family: Gilroy;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 120%; 
+}
+.upper_cross_button{
+  z-index: 9;
+}
+.User_comment_Sec{
+  display: flex;
+  flex-direction: column;
+  margin-left: -11px;
 }
 .User_picture img {
-  width: 18vw;
-  height: 7.85vh;
+  position: relative;
+    top: -2vh;
+    left: -2vh;
+    width: 16vw;
+    height: 6.85vh;
 }
 .app_container {
   display: flex;
@@ -433,8 +495,8 @@ outline: none;
   z-index: -9999;
 }
 .guess_main_container{
-  margin-top: 321px;
-  gap: 17px;
+  margin-top: 252px;
+  gap: 35px;
   position: absolute;
   display: flex;
   justify-content: center;
@@ -465,11 +527,11 @@ line-height: 100%;
 }
 .guess_answer{
   position: absolute;
-    top: 429px;
+    top: 346px;
   z-index: 3;
 }
 .guess_answer textarea::placeholder{
-  color: var(--Dark-Dark--50, #79889D);
+  color: var(--Light-Alpha-Light-Alphat--40, rgba(255, 255, 255, 0.40));
   font-feature-settings: 'clig' off, 'liga' off;
   font-family: Gilroy;
   font-size: 14px;
@@ -478,7 +540,7 @@ line-height: 100%;
   line-height: 120%;
 }
 .guess_answer textarea{
-
+color: var(--Light-Light--100, #FFF);
 font-feature-settings: 'clig' off, 'liga' off;
 font-family: Gilroy;
 font-size: 14px;
