@@ -1,18 +1,19 @@
 import React from "react";
 import GuessBox from "../components/GuessBox";
 import profile from "../assets/Profile.png";
-import { useState, useEffect } from "react";
+import { useState, useEffect ,useRef } from "react";
 import Confetti from "react-confetti";
 import stringSimilarity from 'string-similarity';
 import RightGuess from "./RightGuess";
 const Landingpage = ({ skip, setskip }) => {
+  const textareaRef = useRef(null)
   const [word, setword] = useState("");
   const [right, setright] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const [message, setmessage] = useState("");
   const [topic, settopic] = useState("");
   const [answer, setanswer] = useState("");
-  const [emojies, setemoji] = useState("");
+  const [emojies, setemoji] = useState("💍7️⃣🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻");
   const [data_it, setdata_it] = useState(null);
   const backward = () => {
     setsend(false);
@@ -39,12 +40,13 @@ const Landingpage = ({ skip, setskip }) => {
         return response.json();
       })
       .then((data) => {
+        
         const Data_coming = data.data;
         console.log(Data_coming);
         setmessage(Data_coming.message);
         settopic(Data_coming.reqD[0].topicArea);
         setanswer(Data_coming.reqD[1].topic);
-        setemoji(Data_coming.reqD[2].Emoji);
+        setemoji("💍7️⃣🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻");
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -94,6 +96,38 @@ const Landingpage = ({ skip, setskip }) => {
       return similarity > 0.7;
     });
   };
+  const handleFocus = () => {
+    if (textareaRef.current) {
+      textareaRef.current.setAttribute('inputmode', 'text');
+      textareaRef.current.setAttribute('enterkeyhint', 'done');
+    }
+  };
+
+  const handleBlur = () => {
+    if (textareaRef.current) {
+      textareaRef.current.removeAttribute('inputmode');
+      textareaRef.current.removeAttribute('enterkeyhint');
+    }
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      if (textareaRef.current) {
+        textareaRef.current.blur();
+      }
+    }
+  };
+    const handleTextareaChange = (event) => {
+        const value = event.target.value.trim(); 
+       setword(value);
+        if (value === '') {
+          setIsEmpty(true);
+        } else {
+          setIsEmpty(false);
+        }
+      };
+
   const forward = () => {
     // console.log("forward");
     if (!isEmpty) {
@@ -228,6 +262,19 @@ const Landingpage = ({ skip, setskip }) => {
         right={right}
         word={word}
       />
+      {!send &&<div className="guess_answer">
+  <textarea
+        ref={textareaRef}
+        onChange={handleTextareaChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        onKeyPress={handleKeyPress}
+        inputMode="text"
+        enterKeyHint="done"
+        placeholder="Type answer here"
+      ></textarea>
+      </div>
+}
       {!send && message !== "" && (
         <div className="Lie_Information">
           <div className="User_picture">

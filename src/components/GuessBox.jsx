@@ -1,7 +1,6 @@
 import React from "react";
 import { useState,useEffect,useRef } from "react";
 const GuessBox = ({setIsEmpty, isEmpty ,setword ,topic ,emojies, answer, forward , send , right , word}) => {
-  const textareaRef = useRef(null);
   const [class_set, setclass]=useState("");
   const emojis = emojies.split(' ');
   const colorStyle = !right ? { color: 'var(--Info-Error-Error-Light, #FF4567)' } : { color: '' };
@@ -19,38 +18,7 @@ const GuessBox = ({setIsEmpty, isEmpty ,setword ,topic ,emojies, answer, forward
 
     return () => clearTimeout(timer); 
   }, []);
-  const handleFocus = () => {
-    if (textareaRef.current) {
-      textareaRef.current.setAttribute('inputmode', 'text');
-      textareaRef.current.setAttribute('enterkeyhint', 'done');
-    }
-  };
-
-  const handleBlur = () => {
-    if (textareaRef.current) {
-      textareaRef.current.removeAttribute('inputmode');
-      textareaRef.current.removeAttribute('enterkeyhint');
-    }
-  };
-
-  const handleKeyPress = (event) => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      if (textareaRef.current) {
-        textareaRef.current.blur();
-      }
-    }
-  };
-    const handleTextareaChange = (event) => {
-        const value = event.target.value.trim(); 
-       setword(value);
-        if (value === '') {
-          setIsEmpty(true);
-        } else {
-          setIsEmpty(false);
-        }
-      };
-    
+      
   return (
     <div className={`guess_main_container ${send?'answer_box':''}`}>
       {send && <div className={`Upper_tickmark ${kill?'Animation_div2':''}`} style={{marginTop:right &&'-21px' , marginBottom:right && '11px'}}>
@@ -80,8 +48,7 @@ const GuessBox = ({setIsEmpty, isEmpty ,setword ,topic ,emojies, answer, forward
 
       </div>
       </div>
-      <div className="guess_text">Guess the {topic}</div>
-      {!send &&<div className="guess_heading">{countWords(answer)} words</div>}
+      {!send &&<div className="guess_heading">{topic}</div>}
       <div className="guess_symbol"> 
       <div className="emoji-container">
       {emojis.map((emoji, index) => (
@@ -92,19 +59,7 @@ const GuessBox = ({setIsEmpty, isEmpty ,setword ,topic ,emojies, answer, forward
     </div>
 
 </div>
-{!send &&<div className="guess_answer">
-  <textarea
-        ref={textareaRef}
-        onChange={handleTextareaChange}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        onKeyPress={handleKeyPress}
-        inputMode="text"
-        enterKeyHint="done"
-        placeholder="Type answer here"
-      ></textarea>
-      </div>
-}
+
 {send && <div className={`Movie_name ${right?'margin_it':''}`} style={colorStyle}>{right?answer:word}</div>}
        {(send && !right &&
         <div className={`Wrong_div ${kill?'Animation_div':''}`}>

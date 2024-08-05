@@ -58,7 +58,7 @@ line-height: 0%;
   top: 53vh;
 }
 .emoji-container {
-  max-width: 355px;
+  max-width: 315px;
   flex-wrap: wrap;
   display: flex;
   gap: 10px; 
@@ -257,8 +257,8 @@ line-height: 100%;
 }
 ._notsend_width{
   transition: width 0.5s ease-in-out, height 0.5s ease-in-out; 
-  width: 360px;
-  height: 248px;
+  width: 350px;
+  height: 206px;
 }
 ._send_width{
   transition: width 0.5s ease-in-out, height 0.5s ease-in-out; 
@@ -464,6 +464,8 @@ line-height: 100%;
   
 }
 .guess_answer{
+  position: absolute;
+    top: 429px;
   z-index: 3;
 }
 .guess_answer textarea::placeholder{
@@ -476,7 +478,7 @@ line-height: 100%;
   line-height: 120%;
 }
 .guess_answer textarea{
-   color: var(--Dark-Dark--100, #0E1928);
+
 font-feature-settings: 'clig' off, 'liga' off;
 font-family: Gilroy;
 font-size: 14px;
@@ -487,11 +489,12 @@ padding: .6rem;
 overflow: hidden;
   resize: none;
   border-radius: var(--large, 12px);
-  background: var(--Light-Light--100, #FFF);
+  border: 0.724px solid var(--Dark-Dark--60, #526175);
+  background: var(--Dark-Dark--100, #0E1928);
   z-index: 3;
-  width: 319px;
-height: 41px;
-flex-shrink: 0;
+  width: 350px;
+  height: 50px;
+  flex-shrink: 0;
 }
 .guess_text{
   z-index: 3;
