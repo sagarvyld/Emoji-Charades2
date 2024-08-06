@@ -8,6 +8,7 @@ import RightGuess from "./RightGuess";
 const Landingpage = ({ skip, setskip }) => {
   const textareaRef = useRef(null)
   const [word, setword] = useState("");
+  const [Kill2,setKill2]=useState(true);
   const [right, setright] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const [message, setmessage] = useState("has send you an emoji charades..");
@@ -15,6 +16,8 @@ const Landingpage = ({ skip, setskip }) => {
   const [answer, setanswer] = useState("");
   const [emojies, setemoji] = useState("💍7️⃣🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻");
   const [data_it, setdata_it] = useState(null);
+  
+  // console.log(Kill2);
   const backward = () => {
     console.log("oppp")
     setsend(false);
@@ -22,7 +25,7 @@ const Landingpage = ({ skip, setskip }) => {
   };
   const triggerConfetti = () => {
     setShowConfetti(true);
-    setTimeout(() => setShowConfetti(false), 25000);
+    setTimeout(() => setShowConfetti(false), 2500);
   };
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -47,12 +50,13 @@ const Landingpage = ({ skip, setskip }) => {
         setmessage("has send you an emoji charades..");
         settopic(Data_coming.reqD[0].topicArea);
         setanswer(Data_coming.reqD[1].topic);
-        setemoji("💍7️⃣🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻");
+        setemoji(Data_coming.reqD[2].Emoji);
       })
       .catch((error) => {
         console.error("Error:", error);
       });
   }, []);
+
   const [isEmpty, setIsEmpty] = useState(true);
   const [style, setstyle] = useState(false);
   const [send, setsend] = useState(false);
@@ -81,22 +85,7 @@ const Landingpage = ({ skip, setskip }) => {
       .map(word => abbreviations[word] || word)
   };
 
-  const compareMovieTitles = (userInput, correctAnswer) => {
-    const normalizedUserInput = normalizeString(userInput);
-    const normalizedCorrectAnswer = normalizeString(correctAnswer);
   
-    if (normalizedUserInput.join(' ') === normalizedCorrectAnswer.join(' ')) {
-      return true;
-    }
-
-    return normalizedUserInput.every((userWord, index) => {
-      if (index >= normalizedCorrectAnswer.length) return false; 
-      const correctWord = normalizedCorrectAnswer[index];
-      const similarity = stringSimilarity.compareTwoStrings(userWord, correctWord);
-      console.log(`Comparing "${userWord}" with "${correctWord}": Similarity = ${similarity}`);
-      return similarity > 0.7;
-    });
-  };
   const handleFocus = () => {
     if (textareaRef.current) {
       textareaRef.current.setAttribute('inputmode', 'text');
@@ -132,11 +121,7 @@ const Landingpage = ({ skip, setskip }) => {
   const forward = () => {
     // console.log("forward");
     if (!isEmpty) {
-      if (compareMovieTitles(word.toLowerCase(),answer.toLowerCase())) {
-        setright(true);
-      } else {
-        setright(false);
-      }
+      
       setsend(true);
     }
     const data = {
@@ -278,6 +263,8 @@ const Landingpage = ({ skip, setskip }) => {
         <p className="Emoji_charades">Emoji charades</p>
       </div>
       <GuessBox
+      Kill3={Kill2}
+        kill2={setKill2}
         emojies={emojies}
         isEmpty={isEmpty}
         topic={topic}

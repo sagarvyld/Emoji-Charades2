@@ -336,12 +336,15 @@ line-height: 100%;
 .random{
   position: absolute;
   z-index: 3;
-  top: -5px;
-  left: 284px;
+  top: -8px;
+  left: 95%;
 }
 .svg_star{
   margin-right: 40px;
   margin-top: 30px;
+}
+.left-random{
+  left:90% !important;
 }
 .answer_box_guessbox{
   transition: all 0.5s ease-in-out; 
@@ -353,17 +356,21 @@ border-radius: 30px;
 background: var(--Info-Success-Success-Light, #46FF9B);
 z-index: 5;
 position: absolute;
-top:153px;
+top:151px;
+
 }
 ._notsend_width{
   transition: width 0.5s ease-in-out, height 0.5s ease-in-out; 
   width: 350px;
   height: 166px;
 }
+.answer_box2{
+  top: 129px !important;
+}
 ._send_width{
   transition: width 0.5s ease-in-out, height 0.5s ease-in-out; 
   width: 350px;
-  height: 207px;
+  height: 185px;
 }
 ._realsvg{
   transition: width 0.5s ease-in-out, height 0.5s ease-in-out; 

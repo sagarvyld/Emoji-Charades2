@@ -1,8 +1,16 @@
 import React from "react";
 import { useState,useEffect,useRef } from "react";
-const GuessBox = ({setIsEmpty, isEmpty ,setword ,topic ,emojies, answer, forward , send , right , word}) => {
+const GuessBox = ({setIsEmpty, isEmpty ,kill2 ,Kill3 ,setword ,topic ,emojies, answer, forward , send , right , word}) => {
   const [class_set, setclass]=useState("");
   const emojis = emojies.split(' ');
+  console.log(emojis.length);
+  console.log(emojis[0].length)
+if(emojis[0].length>15){
+  kill2(true);
+}else{
+  kill2(false);
+}
+console.log(Kill3)
   const colorStyle = !right ? { color: 'var(--Info-Error-Error-Light, #FF4567)' } : { color: '' };
   const [kill, setKill] = useState(false);
   function countWords(sentence) {
@@ -35,7 +43,7 @@ const GuessBox = ({setIsEmpty, isEmpty ,setword ,topic ,emojies, answer, forward
       </div>
       </div>
       <><div className="guess_heading">{topic}</div>
-      {!send &&<div className="random"><button><svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {!send &&<div className={`${Kill3 && "left-random"} random`}><button><svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="16.5" cy="16.5518" r="16" fill="#0E1928" fill-opacity="0.2"/>
       <path d="M23.8774 12.3085C23.6209 11.8631 23.2507 11.4839 22.7926 11.2181C22.7908 11.2162 22.7889 11.2162 22.7871 11.2145L17.7314 8.29535C17.7241 8.29168 17.7186 8.28801 17.7113 8.28434C16.7914 7.76396 15.6626 7.76762 14.75 8.30089L10.266 10.9066L10.2239 10.9304C9.7658 11.1961 9.39747 11.5717 9.14276 12.0153C8.89172 12.4459 8.75062 12.9425 8.74329 13.4573V13.494L8.72681 19.3029V19.3138C8.72681 20.3693 9.28936 21.346 10.2001 21.8792C10.2056 21.883 10.2092 21.8848 10.2147 21.8884L11.6001 22.6873L15.2704 24.8056C15.7322 25.0732 16.249 25.2052 16.7639 25.2052C17.2788 25.2033 17.7919 25.0677 18.2518 24.802L22.778 22.1724C22.7798 22.1706 22.7816 22.1706 22.7834 22.1687C23.6923 21.6374 24.2549 20.6643 24.2567 19.6089L24.2732 13.8V13.789C24.2732 13.2613 24.1321 12.7519 23.8774 12.3085Z" fill="white"/>
       <path d="M16.5101 10.8857C15.8015 10.8857 15.2271 11.25 15.2271 11.6993C15.2271 12.1486 15.8015 12.5128 16.5101 12.5128C17.2186 12.5128 17.793 12.1486 17.793 11.6993C17.793 11.25 17.2186 10.8857 16.5101 10.8857Z" fill="#0E1928"/>
@@ -55,7 +63,7 @@ const GuessBox = ({setIsEmpty, isEmpty ,setword ,topic ,emojies, answer, forward
 
 </div>
 
-{send &&<div className="answer_box_guessbox">{answer}</div>}
+{send &&<div className={`answer_box_guessbox ${!Kill3 &&"answer_box2"}`}>{answer}</div>}
 
     </div>
   );
