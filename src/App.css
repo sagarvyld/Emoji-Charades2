@@ -353,7 +353,7 @@ border-radius: 30px;
 background: var(--Info-Success-Success-Light, #46FF9B);
 z-index: 5;
 position: absolute;
-top:156px;
+top:154px;
 }
 ._notsend_width{
   transition: width 0.5s ease-in-out, height 0.5s ease-in-out; 
