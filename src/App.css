@@ -88,7 +88,7 @@ font-style: normal;
 font-weight: 700;
 line-height: 100%; 
   display: flex;
-  width: 60vw;
+  width: 173px;
   padding: 0.9375rem 2rem;
   justify-content: center;
   align-items: center;
@@ -96,6 +96,10 @@ line-height: 100%;
   border: 0px;
   border-radius: var(--x-Large, 999px);
   background: var(--Dark-Dark--70, #384353);
+  position: fixed;
+  bottom: 7vh;
+}
+.button_setpos{
   position: fixed;
   bottom: 7vh;
 }
@@ -113,6 +117,7 @@ line-height: 100%;
 }
 .skip_container{
   position: absolute;
+  left:0px;
   width: 100vw;
 }
 .the_skip_box{
@@ -168,18 +173,21 @@ line-height: 100%;
   margin:0px;
   margin-top: 15px;
 }
+.lower_bottom_buttons{
+  display: flex;
+justify-content: space-around;
+  width: 100vw;
+  position: fixed;
+  bottom: 7vh;
+}
 @keyframes trans {
   0%{
     opacity: 0;
     z-index: 0;
     transform: translateY(-190px);
   }
-  50%{
-    z-index: 0;
-    transform: translateY(70px);
-  }
   100%{
-    z-index: 30;
+    z-index: 0;
     transform: translateY(0);
   }
 }
@@ -187,16 +195,14 @@ line-height: 100%;
 @keyframes trans2 {
   0%{
     z-index: 0;
-    transform: translateY(190px);
-  }
-  50%{
-    z-index: 0;
-    transform: translateY(-70px);
+    transform: translateY(0px);
   }
   100%{
-    z-index: 30;
-    transform: translateY(0);
+    z-index: 0;
+    opacity: 0;
+    transform: translateY(-100px);
   }
+ 
 }
 
 @media (max-height: 774px) {
@@ -294,6 +300,18 @@ line-height: 100%;
   margin-right: 40px;
   margin-top: 30px;
 }
+.answer_box_guessbox{
+  transition: all 0.5s ease-in-out; 
+  display: inline-flex;
+padding: 6px var(--large, 12px);
+align-items: flex-end;
+gap: 6px;
+border-radius: 30px;
+background: var(--Info-Success-Success-Light, #46FF9B);
+z-index: 5;
+position: absolute;
+top:156px;
+}
 ._notsend_width{
   transition: width 0.5s ease-in-out, height 0.5s ease-in-out; 
   width: 350px;
@@ -313,7 +331,62 @@ line-height: 100%;
 }
 .answer_box{
   margin-top:285px !important;
-  gap: 26px !important;
+  gap: 38px !important;
+}
+.Guess_is , .Your_guess {
+  padding:0px;
+  margin:0px;
+}
+.Your_guess{
+  color: var(--Light-Light--70, #BCC9DA);
+
+/* Caption-1/Caption-1-Medium */
+font-family: Gilroy;
+font-size: 13px;
+font-style: normal;
+font-weight: 500;
+line-height: 17px; /* 141.667% */
+  margin-top: 2px;
+  margin-bottom: 5px;
+}
+.Guess_More_Button{
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: var(--Primary-Primary-100, #C6FF00);
+text-align: center;
+margin-bottom: 10px;
+/* Caption-1/Caption-1-SemiBold */
+font-family: Gilroy;
+font-size: 13px;
+font-style: normal;
+font-weight: 600;
+line-height: 17px; /* 141.667% */
+}
+.Guess_is{
+  color: var(--Light-Light--100, #FFF);
+
+/* P1/P1-Extra Bold */
+font-family: Gilroy;
+font-size: 20px;
+font-style: normal;
+font-weight: 800;
+line-height: 26px; /* 144.444% */
+margin-bottom: 8px;
+}
+
+.the_answer_reveal{
+  transition: all ease-in-out; 
+  border-radius: var(--large, 12px);
+background: var(--Dark-Dark--80, #273343);
+width: 350px;
+height: 149px;
+position: absolute;
+top:335px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
 }
 .svg_answer {
   height: 325px;
@@ -390,6 +463,23 @@ line-height: 100%;
 background-color: transparent;
 border: none;
 }
+.Create_Own{
+  border-radius: var(--x-Large, 999px);
+border: 1.5px solid var(--Light-Light--100, #FFF);
+font-family: Gilroy;
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: 100%; 
+  display: flex;
+  width: 173px;
+  padding: 0.9375rem 1.4rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  background-color: transparent;
+  color: var(--Light-Light--100, #FFF);
+}
 .SpotPage_Submit {
   color: var(--Neutral-Rich-Dark, #090909);
 font-family: Gilroy;
@@ -398,16 +488,14 @@ font-style: normal;
 font-weight: 700;
 line-height: 100%; 
   display: flex;
-  width: 60vw;
-  padding: 0.9375rem 2rem;
+  width: 173px;
+  padding: 0.9375rem 1.4rem;
   justify-content: center;
   align-items: center;
   gap: 0.625rem;
   border: 0px;
   border-radius: 42px;
 background: var(--Primary-Primary-100, #C6FF00);
-  position: fixed;
-  bottom: 7vh;
 }.guess_main_container {
   max-height: 100%;
   position: relative;
