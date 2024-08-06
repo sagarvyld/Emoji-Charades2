@@ -63,6 +63,7 @@ line-height: 0%;
   max-width: 315px;
   flex-wrap: wrap;
   display: flex;
+  justify-content: center;
   gap: 10px; 
 }
 
@@ -356,7 +357,7 @@ border-radius: 30px;
 background: var(--Info-Success-Success-Light, #46FF9B);
 z-index: 5;
 position: absolute;
-top:151px;
+top:147px;
 
 }
 ._notsend_width{
@@ -422,7 +423,9 @@ font-weight: 800;
 line-height: 26px; /* 144.444% */
 margin-bottom: 8px;
 }
-
+.top-random{
+  top:-26px !important;
+}
 .the_answer_reveal{
   transition: all ease-in-out; 
   border-radius: var(--large, 12px);
@@ -430,7 +433,7 @@ background: var(--Dark-Dark--80, #273343);
 width: 350px;
 height: 149px;
 position: absolute;
-top:343px;
+top:327px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
