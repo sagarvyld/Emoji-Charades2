@@ -446,10 +446,10 @@ top:335px;
   margin-top: 103px;
 }
 .Animation_div{
-  animation:trans 3s forwards;
+  animation:trans 1s forwards;
 }
 .Animation_div2{
-  animation:trans2 3s forwards;
+  animation:trans2 1s forwards;
 }
 
 .Wrong_div{

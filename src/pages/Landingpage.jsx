@@ -22,7 +22,7 @@ const Landingpage = ({ skip, setskip }) => {
   };
   const triggerConfetti = () => {
     setShowConfetti(true);
-    setTimeout(() => setShowConfetti(false), 2500);
+    setTimeout(() => setShowConfetti(false), 25000);
   };
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -175,7 +175,6 @@ const Landingpage = ({ skip, setskip }) => {
    
       {
         <div className="background_svg">
-             {showConfetti && <Confetti />}
           <svg
             width="360"
             height="250"
@@ -191,7 +190,7 @@ const Landingpage = ({ skip, setskip }) => {
           </svg>
         </div>
       }
-  
+    {showConfetti && <Confetti />}
         <div className="upper_buttons">
           <button className="back_button" onClick={()=>send && backward()}>
             {!send?<svg
