@@ -5,7 +5,7 @@ import { useState, useEffect ,useRef } from "react";
 import Confetti from "react-confetti";
 import stringSimilarity from 'string-similarity';
 import RightGuess from "./RightGuess";
-const Landingpage = ({ skip, setskip , Single }) => {
+const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
   const textareaRef = useRef(null)
   const [word, setword] = useState("");
   const [Kill2,setKill2]=useState(true);
@@ -223,7 +223,7 @@ const Landingpage = ({ skip, setskip , Single }) => {
               </svg>}
           </button>
           <button className="skip_button" onClick={() => !send?setskip(true):console.log("share")}>
-            {!send?'Skip':Single && <svg width="38" height="38" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {!send?'Skip':Share && <svg width="38" height="38" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 <circle cx="16" cy="16" r="15.5" fill="#384353" stroke="#0E1928"/>
 <rect width="14" height="14" transform="translate(8 8)" fill="#384353"/>
 <path d="M19.7 13.4C21.1912 13.4 22.4 12.1912 22.4 10.7C22.4 9.20883 21.1912 8 19.7 8C18.2088 8 17 9.20883 17 10.7C17 10.8129 17.0069 10.9243 17.0204 11.0335L12.5743 13.2566C12.0887 12.7881 11.428 12.5 10.7 12.5C9.20883 12.5 8 13.7088 8 15.2C8 16.6912 9.20883 17.9 10.7 17.9C11.428 17.9 12.0888 17.6119 12.5744 17.1434L17.0204 19.3664C17.0069 19.4757 17 19.587 17 19.7C17 21.1912 18.2088 22.4 19.7 22.4C21.1912 22.4 22.4 21.1912 22.4 19.7C22.4 18.2088 21.1912 17 19.7 17C18.972 17 18.3113 17.2881 17.8257 17.7566L13.3796 15.5335C13.3931 15.4243 13.4 15.3129 13.4 15.2C13.4 15.087 13.3931 14.9757 13.3796 14.8664L17.8256 12.6434C18.3112 13.1119 18.972 13.4 19.7 13.4Z" fill="white"/>
@@ -331,7 +331,7 @@ const Landingpage = ({ skip, setskip , Single }) => {
       ) : (
       <div className="lower_bottom_buttons">
           <button className="Create_Own">Create your own</button>
-        {Single &&<button className="SpotPage_Submit" onClick={() => console.log("share")}>
+        {CF &&<button className="SpotPage_Submit" onClick={() => console.log("share")}>
           <p>Challenge friends!</p>
         </button> }
         </div>
