@@ -217,13 +217,11 @@ background: rgba(131, 151, 255, 0.20);
 }
 .send_to_friend .text{
   color: var(--Light-Light--90, #F0F4F8);
-
-/* Caption-1/Caption-1-Medium */
 font-family: Gilroy;
 font-size: 12px;
 font-style: normal;
 font-weight: 500;
-line-height: 17px; /* 141.667% */
+line-height: 17px; 
 }
 @keyframes trans {
   0%{
