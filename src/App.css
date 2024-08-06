@@ -48,8 +48,8 @@ line-height: 0%;
 
 .Lie_Information {
   margin-bottom: -10px;
-  width: 70vw;
-  height: 7vh;
+  width: 310px;
+  height: 65px;
   flex-shrink: 0;
   border-radius: 2px var(--large, 12px) var(--large, 12px) var(--large, 12px);
   background: var(--Dark-Dark--70, #384353);
@@ -179,6 +179,51 @@ justify-content: space-around;
   width: 100vw;
   position: fixed;
   bottom: 7vh;
+}
+
+.send_to_friend{
+  
+width: 271px;
+padding: 6px;
+justify-content: center;
+align-items: center;
+  position: absolute;
+  top:70vh;
+  display: flex;
+  gap:10px;
+  border-radius: 30px;
+background: rgba(131, 151, 255, 0.20);
+}
+.text_back_svg{
+  position: absolute;
+  top:0px;
+  height: 35.99px;
+}
+.send_to_friend .images{
+  width: 58px;
+  display: flex;
+
+}
+ .pic_b{
+  margin-left:-9px;
+}
+.share_pic{
+
+  display: block;
+  z-index: 99;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+.send_to_friend .text{
+  color: var(--Light-Light--90, #F0F4F8);
+
+/* Caption-1/Caption-1-Medium */
+font-family: Gilroy;
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: 17px; /* 141.667% */
 }
 @keyframes trans {
   0%{
@@ -573,8 +618,8 @@ line-height: 120%;
   position: relative;
     top: -2vh;
     left: -2vh;
-    width: 16vw;
-    height: 6.85vh;
+    width: 82px;
+    height: 70px;
 }
 .app_container {
   display: flex;

@@ -172,9 +172,10 @@ const Landingpage = ({ skip, setskip }) => {
   }, [isEmpty, send]);
   return (
     <div className="app_container">
-      {showConfetti && <Confetti />}
+   
       {
         <div className="background_svg">
+             {showConfetti && <Confetti />}
           <svg
             width="360"
             height="250"
@@ -302,6 +303,23 @@ const Landingpage = ({ skip, setskip }) => {
       ></textarea>
       </div>
 }
+{send && <div className="send_to_friend">
+  <div className="images">
+<img src={profile} className="share_pic "/>
+<img src={profile} className="share_pic pic_b"/>
+<img src={profile} className="share_pic pic_b"/>
+  </div>
+  <div className="text">
+  <svg width="70" height="36" className="text_back_svg" viewBox="0 0 70 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.2">
+<rect x="56.7549" y="-11" width="15" height="87" transform="rotate(30 56.7549 -11)" fill="#5D77FF"/>
+<rect x="43.5" y="-11" width="5.82893" height="87" transform="rotate(30 43.5 -11)" fill="#5D77FF"/>
+</g>
+</svg>
+
+  152 people sent this to their friends
+  </div>
+  </div>}
       {!send && message !== "" && (
         <div className="Lie_Information">
           <div className="User_picture">
