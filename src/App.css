@@ -59,6 +59,9 @@ line-height: 0%;
   position: absolute;
   top: 59vh;
 }
+.top-single-answer{
+  top: 312px !important;
+}
 .emoji-container {
   max-width: 315px;
   flex-wrap: wrap;
