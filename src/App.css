@@ -353,7 +353,7 @@ border-radius: 30px;
 background: var(--Info-Success-Success-Light, #46FF9B);
 z-index: 5;
 position: absolute;
-top:154px;
+top:153px;
 }
 ._notsend_width{
   transition: width 0.5s ease-in-out, height 0.5s ease-in-out; 
@@ -396,7 +396,7 @@ line-height: 17px;
   border: none;
   color: var(--Primary-Primary-100, #C6FF00);
 text-align: center;
-margin-bottom: 10px;
+margin-bottom: 12px;
 font-family: Gilroy;
 font-size: 13px;
 font-style: normal;
