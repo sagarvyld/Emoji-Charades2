@@ -321,7 +321,7 @@ useEffect(()=>{
         </button> }
         </div>
       )}
-      {<div className={`the_answer_reveal ${send?'Animation_div':''} ${!Single && "top-single-answer"}`}>
+      {<div className={`the_answer_reveal ${send?'Animation_div':'Animation_div2'} ${!Single && "top-single-answer"}`}>
         <p className="Your_guess">Your Guess</p>
         <p className="Guess_is">{word}</p>
         {Single && <button className="Guess_More_Button">Guess More &gt;</button> }
