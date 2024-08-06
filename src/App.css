@@ -384,13 +384,11 @@ top:156px;
 }
 .Your_guess{
   color: var(--Light-Light--70, #BCC9DA);
-
-/* Caption-1/Caption-1-Medium */
 font-family: Gilroy;
 font-size: 13px;
 font-style: normal;
 font-weight: 500;
-line-height: 17px; /* 141.667% */
+line-height: 17px; 
   margin-top: 2px;
   margin-bottom: 5px;
 }
@@ -401,17 +399,17 @@ line-height: 17px; /* 141.667% */
   color: var(--Primary-Primary-100, #C6FF00);
 text-align: center;
 margin-bottom: 10px;
-/* Caption-1/Caption-1-SemiBold */
 font-family: Gilroy;
 font-size: 13px;
 font-style: normal;
 font-weight: 600;
-line-height: 17px; /* 141.667% */
+line-height: 17px; 
 }
 .Guess_is{
+  width: 95%;
+  text-align: center;
+  line-break: anywhere;
   color: var(--Light-Light--100, #FFF);
-
-/* P1/P1-Extra Bold */
 font-family: Gilroy;
 font-size: 20px;
 font-style: normal;
