@@ -59,6 +59,9 @@ line-height: 0%;
   position: absolute;
   top: 59vh;
 }
+.display-none{
+  opacity: 0;
+}
 .top-single-answer{
   top: 312px !important;
 }

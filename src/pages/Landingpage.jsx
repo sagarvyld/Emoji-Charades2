@@ -3,8 +3,7 @@ import GuessBox from "../components/GuessBox";
 import profile from "../assets/Profile.png";
 import { useState, useEffect ,useRef } from "react";
 import Confetti from "react-confetti";
-import stringSimilarity from 'string-similarity';
-import RightGuess from "./RightGuess";
+
 const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
   const textareaRef = useRef(null)
   const [word, setword] = useState("");
@@ -15,7 +14,7 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
   const [topic, settopic] = useState("");
   const [answer, setanswer] = useState("");
   const [emojies, setemoji] = useState("💍7️⃣🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻");
-  const [data_it, setdata_it] = useState(null);
+  const [data_it, setdata_it] = useState(0);
   
   // console.log(Kill2);
   const backward = () => {
@@ -60,32 +59,17 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
   const [isEmpty, setIsEmpty] = useState(true);
   const [style, setstyle] = useState(false);
   const [send, setsend] = useState(false);
-
+useEffect(()=>{
+    if(send){
+      setdata_it((prev)=>prev+1);
+    }
+  },[send]);
   useEffect(() => {
     if (send) {
       triggerConfetti();
     }
   }, [right, send]);
- 
-  const stopWords = ['the', 'a', 'an', 'in', 'at', 'to'];
-  const abbreviations = {
-    'dr': 'doctor',
-    'mr': 'mister',
-    'mrs': 'misses',
-    'st': 'street',
-    'jr': 'junior',
-    'sr': 'senior'
-  };
-  const normalizeString = str => {
-    return str
-      .toLowerCase()
-      .replace(/[^a-zA-Z0-9\s]/gi, '') 
-      .split(' ')
-      .filter(word => !stopWords.includes(word) && word) 
-      .map(word => abbreviations[word] || word)
-  };
 
-  
   const handleFocus = () => {
     if (textareaRef.current) {
       textareaRef.current.setAttribute('inputmode', 'text');
@@ -263,6 +247,7 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
         <p className="Emoji_charades">Emoji charades</p>
       </div>
       <GuessBox
+ 
       Single={Single}
       Kill3={Kill2}
         kill2={setKill2}
@@ -336,7 +321,7 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
         </button> }
         </div>
       )}
-      {<div className={`the_answer_reveal ${send?'Animation_div':'Animation_div2'} ${!Single && "top-single-answer"}`}>
+      {<div className={`the_answer_reveal ${send?'Animation_div':''} ${!Single && "top-single-answer"}`}>
         <p className="Your_guess">Your Guess</p>
         <p className="Guess_is">{word}</p>
         {Single && <button className="Guess_More_Button">Guess More &gt;</button> }

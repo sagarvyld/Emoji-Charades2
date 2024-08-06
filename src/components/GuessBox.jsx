@@ -1,7 +1,6 @@
 import React from "react";
 import { useState,useEffect,useRef } from "react";
 const GuessBox = ({setIsEmpty, isEmpty ,kill2 ,Kill3 ,setword ,topic ,emojies, answer, forward , send , right , word}) => {
-  const [class_set, setclass]=useState("");
   const emojis = emojies.split(' ');
   console.log(emojis.length);
   console.log(emojis[0].length)
@@ -10,22 +9,7 @@ if(emojis[0].length>15){
 }else{
   kill2(false);
 }
-console.log(Kill3)
-  const colorStyle = !right ? { color: 'var(--Info-Error-Error-Light, #FF4567)' } : { color: '' };
-  const [kill, setKill] = useState(false);
-  function countWords(sentence) {
-    return sentence.trim().split(/\s+/).filter(Boolean).length;
-  }
 
-  useEffect(() => {
-    setword('');
-    const timer = setTimeout(() => {
-      setKill(true);
-
-    }, 100);
-
-    return () => clearTimeout(timer); 
-  }, []);
       
   return (
     <div className={`guess_main_container ${send?'answer_box':''}`}>
