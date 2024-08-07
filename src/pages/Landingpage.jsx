@@ -18,6 +18,8 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
   const [emojies, setemoji] = useState("💍7️⃣🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻");
   const [data_it, setdata_it] = useState(0);
   const [Params,setParams]=useState(false);
+  const [firsttime,setfirsttime]=useState(0);
+
   // console.log(Kill2);
   const backward = () => {
     console.log("oppp")
@@ -147,6 +149,12 @@ useEffect(()=>{
       setstyle(true);
     }
   }, [isEmpty, send]);
+  useEffect(()=>{
+    console.log(firsttime)
+  },[firsttime])
+    useEffect(()=>{
+      setfirsttime((prev)=>prev+1);
+    },[send])
   return (
     <div className="app_container">
    
@@ -329,7 +337,7 @@ useEffect(()=>{
         </button> }
         </div>
       )}
-      {<div className={`the_answer_reveal ${send?'Animation_div':'Animation_div2'} ${!Single && "top-single-answer"}`}>
+      {<div className={`the_answer_reveal ${send?'Animation_div':firsttime>2?'Animation_div2':'display-none'} ${!Single && "top-single-answer"}`}>
         <p className="Your_guess">Your Guess</p>
         <p className="Guess_is">{word}</p>
         {Single && <button className="Guess_More_Button">Guess More &gt;</button> }
