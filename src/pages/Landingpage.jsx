@@ -2,6 +2,8 @@ import React from "react";
 import GuessBox from "../components/GuessBox";
 import profile from "../assets/Profile.png";
 import { useState, useEffect ,useRef } from "react";
+import profile2 from "../assets/Profile2.png";
+import profile3 from "../assets/Profile3.png";
 import Confetti from "react-confetti";
 
 const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
@@ -15,7 +17,7 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
   const [answer, setanswer] = useState("");
   const [emojies, setemoji] = useState("💍7️⃣🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻");
   const [data_it, setdata_it] = useState(0);
-  
+  const [Params,setParams]=useState(false);
   // console.log(Kill2);
   const backward = () => {
     console.log("oppp")
@@ -32,6 +34,12 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
     const params = new URLSearchParams({
       activityId: urlParams.get("activityId"),
     });
+    const paramsss=(urlParams.get("activityId"));
+    if(window.location.search){
+    setParams(true);
+    }else{
+      setParams(false);
+    }
     fetch(`${url}?${params}`, {
       method: "GET",
       headers: {},
@@ -277,9 +285,9 @@ useEffect(()=>{
 }
 {send && <div className="send_to_friend">
   <div className="images">
-<img src={profile} className="share_pic "/>
+<img src={profile2} className="share_pic "/>
 <img src={profile} className="share_pic pic_b"/>
-<img src={profile} className="share_pic pic_b"/>
+<img src={profile3} className="share_pic pic_b"/>
   </div>
   <div className="text">
   <svg width="70" height="36" className="text_back_svg" viewBox="0 0 70 36" fill="none" xmlns="http://www.w3.org/2000/svg">
