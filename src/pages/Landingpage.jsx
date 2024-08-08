@@ -54,10 +54,10 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
         
         const Data_coming = data.data;
         console.log(Data_coming);
-        setmessage(Data_coming.message);
-        settopic(Data_coming.reqD[0].topicArea);
-        setanswer(Data_coming.reqD[1].topic);
-        setemoji(Data_coming.reqD[2].Emoji);
+        setmessage(Data_coming.ActD.message);
+        settopic(Data_coming.ActD.reqD[0].topicArea);
+        setanswer(Data_coming.ActD.reqD[1].topic);
+        setemoji(Data_coming.ActD.reqD[2].Emoji);
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -91,7 +91,7 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
  
   };
   const backward = () => {
-    console.log("oppp")
+    // console.log("oppp")
     setsend(false);
     setIsEmpty(true);
   };
@@ -123,10 +123,10 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
         
         const Data_coming = data.data;
         console.log(Data_coming);
-        setmessage(Data_coming.message);
-        settopic(Data_coming.reqD[0].topicArea);
-        setanswer(Data_coming.reqD[1].topic);
-        setemoji(Data_coming.reqD[2].Emoji);
+        setmessage(Data_coming.ActD.message);
+        settopic(Data_coming.ActD.reqD[0].topicArea);
+        setanswer(Data_coming.ActD.reqD[1].topic);
+        setemoji(Data_coming.ActD.reqD[2].Emoji);
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -147,10 +147,10 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
           
           const Data_coming = data.data;
           console.log(Data_coming);
-          setmessage(Data_coming.message);
-          settopic(Data_coming.reqD[0].topicArea);
-          setanswer(Data_coming.reqD[1].topic);
-          setemoji(Data_coming.reqD[2].Emoji);
+          setmessage(Data_coming.ActD.message);
+          settopic(Data_coming.ActD.reqD[0].topicArea);
+          setanswer(Data_coming.ActD.reqD[1].topic);
+          setemoji(Data_coming.ActD.reqD[2].Emoji);
         })
         .catch((error) => {
           console.error("Error:", error);
