@@ -6,7 +6,9 @@ import profile2 from "../assets/Profile2.png";
 import profile3 from "../assets/Profile3.png";
 import Confetti from "react-confetti";
 import { useNavigate,useLocation } from "react-router-dom";
+import Loader from "../components/Loader";
 const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
+  const [loading, setLoading] = useState(false);
   const textareaRef = useRef(null)
   const [word, setword] = useState("");
   const [Kill2,setKill2]=useState(true);
@@ -29,6 +31,7 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
     const basePath = currentPath.split('?')[0];
     navigate(basePath);
     setsend(false);
+    setLoading(false);
     const urlParams = new URLSearchParams(window.location.search);
     const url = "https://vyld-cb-dev-api.vyld.io/api/v1/activity-games/game";
     const params = new URLSearchParams({
@@ -84,6 +87,8 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
         //   console.error("Error:", error);
         // });
     }
+      setLoading(true);
+ 
   };
   const backward = () => {
     console.log("oppp")
@@ -95,6 +100,7 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
     setTimeout(() => setShowConfetti(false), 2500);
   };
   useEffect(() => {
+    setLoading(false)
     const urlParams = new URLSearchParams(window.location.search);
     const url = "https://vyld-cb-dev-api.vyld.io/api/v1/activity-games/game";
     const params = new URLSearchParams({
@@ -150,7 +156,8 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
           console.error("Error:", error);
         });
     }
-   
+      setLoading(true);
+ 
   }, []);
 
   const [isEmpty, setIsEmpty] = useState(true);
@@ -243,7 +250,8 @@ useEffect(()=>{
       setfirsttime((prev)=>prev+1);
     },[send])
   return (
-    <div className="app_container">
+    <>
+   {loading? <div className="app_container">
    
       {
         <div className="background_svg">
@@ -429,7 +437,8 @@ useEffect(()=>{
         <p className="Guess_is">{word}</p>
         {Single && <button className="Guess_More_Button" onClick={()=>handleClick()}>Guess More &gt;</button> }
       </div>}
-    </div>
+    </div>:<Loader/>}
+    </>
   );
 };
 
