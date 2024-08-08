@@ -356,6 +356,7 @@ margin-right: -277px;
   left:90% !important;
 }
 .answer_box_guessbox{
+  white-space: nowrap;
   transition: all 0.5s ease-in-out; 
   display: inline-flex;
 padding: 6px var(--large, 12px);

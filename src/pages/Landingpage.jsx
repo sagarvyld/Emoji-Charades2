@@ -14,10 +14,10 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
   const [Kill2,setKill2]=useState(true);
   const [right, setright] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
-  const [message, setmessage] = useState("has send you an emoji charades..");
+  const [message, setmessage] = useState("");
   const [topic, settopic] = useState("");
   const [answer, setanswer] = useState("");
-  const [emojies, setemoji] = useState("💍7️⃣🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻🎻");
+  const [emojies, setemoji] = useState("");
   const [data_it, setdata_it] = useState(0);
   const [Params,setParams]=useState(false);
   const [firsttime,setfirsttime]=useState(0);
