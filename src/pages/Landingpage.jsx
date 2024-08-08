@@ -5,7 +5,7 @@ import { useState, useEffect ,useRef } from "react";
 import profile2 from "../assets/Profile2.png";
 import profile3 from "../assets/Profile3.png";
 import Confetti from "react-confetti";
-
+import { useNavigate,useLocation } from "react-router-dom";
 const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
   const textareaRef = useRef(null)
   const [word, setword] = useState("");
@@ -21,6 +21,70 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
   const [firsttime,setfirsttime]=useState(0);
 
   // console.log(Kill2);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleClick = () => {
+    const currentPath = location.pathname;
+    const basePath = currentPath.split('?')[0];
+    navigate(basePath);
+    setsend(false);
+    const urlParams = new URLSearchParams(window.location.search);
+    const url = "https://vyld-cb-dev-api.vyld.io/api/v1/activity-games/game";
+    const params = new URLSearchParams({
+      activityId: urlParams.get("activityId"),
+    });
+  
+    if(window.location.search){
+    setParams(true);
+    fetch(`${url}?${params}`, {
+      method: "GET",
+      headers: {},
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        
+        const Data_coming = data.data;
+        console.log(Data_coming);
+        setmessage(Data_coming.message);
+        settopic(Data_coming.reqD[0].topicArea);
+        setanswer(Data_coming.reqD[1].topic);
+        setemoji(Data_coming.reqD[2].Emoji);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    }else{
+      setParams(false);
+      // fetch(`${url}`, {
+      //   method: "GET",
+      //   headers: {},
+      // })
+      //   .then((response) => {
+      //     if (!response.ok) {
+      //       throw new Error("Network response was not ok");
+      //     }
+      //     return response.json();
+      //   })
+      //   .then((data) => {
+          
+      //     const Data_coming = data.data;
+      //     console.log(Data_coming);
+          setmessage("Random");
+          settopic("MOVIE");
+          setanswer("723456");
+          setemoji("💍");
+        // })
+        // .catch((error) => {
+        //   console.error("Error:", error);
+        // });
+    }
+  };
   const backward = () => {
     console.log("oppp")
     setsend(false);
@@ -36,12 +100,9 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
     const params = new URLSearchParams({
       activityId: urlParams.get("activityId"),
     });
-    const paramsss=(urlParams.get("activityId"));
+  
     if(window.location.search){
     setParams(true);
-    }else{
-      setParams(false);
-    }
     fetch(`${url}?${params}`, {
       method: "GET",
       headers: {},
@@ -56,7 +117,7 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
         
         const Data_coming = data.data;
         console.log(Data_coming);
-        setmessage("has send you an emoji charades..");
+        setmessage(Data_coming.message);
         settopic(Data_coming.reqD[0].topicArea);
         setanswer(Data_coming.reqD[1].topic);
         setemoji(Data_coming.reqD[2].Emoji);
@@ -64,6 +125,32 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
       .catch((error) => {
         console.error("Error:", error);
       });
+    }else{
+      setParams(false);
+      fetch(`${url}`, {
+        method: "GET",
+        headers: {},
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          
+          const Data_coming = data.data;
+          console.log(Data_coming);
+          setmessage(Data_coming.message);
+          settopic(Data_coming.reqD[0].topicArea);
+          setanswer(Data_coming.reqD[1].topic);
+          setemoji(Data_coming.reqD[2].Emoji);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
+   
   }, []);
 
   const [isEmpty, setIsEmpty] = useState(true);
@@ -175,7 +262,7 @@ useEffect(()=>{
           </svg>
         </div>
       }
-    {showConfetti && <Confetti />}
+    {showConfetti && send && <Confetti />}
         <div className="upper_buttons">
           <button className="back_button" onClick={()=>send && backward()}>
             {!send?<svg
@@ -263,7 +350,7 @@ useEffect(()=>{
         <p className="Emoji_charades">Emoji charades</p>
       </div>
       <GuessBox
- 
+      params={Params}
       Single={Single}
       Kill3={Kill2}
         kill2={setKill2}
@@ -340,7 +427,7 @@ useEffect(()=>{
       {<div className={`the_answer_reveal ${send?'Animation_div':firsttime>2?'Animation_div2':'display-none'} ${!Single && "top-single-answer"}`}>
         <p className="Your_guess">Your Guess</p>
         <p className="Guess_is">{word}</p>
-        {Single && <button className="Guess_More_Button">Guess More &gt;</button> }
+        {Single && <button className="Guess_More_Button" onClick={()=>handleClick()}>Guess More &gt;</button> }
       </div>}
     </div>
   );

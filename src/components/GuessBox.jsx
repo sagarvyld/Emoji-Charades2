@@ -1,6 +1,7 @@
 import React from "react";
 import { useState,useEffect,useRef } from "react";
-const GuessBox = ({setIsEmpty, isEmpty ,kill2 ,Kill3 ,setword ,topic ,emojies, answer, forward , send , right , word}) => {
+import { useNavigate, useLocation } from "react-router-dom";
+const GuessBox = ({setIsEmpty,params, isEmpty ,kill2 ,Kill3 ,setword ,topic ,emojies, answer, forward , send , right , word}) => {
   const emojis = emojies.split(' ');
   console.log(emojis.length);
   console.log(emojis[0].length)
@@ -9,7 +10,70 @@ if(emojis[0].length>15){
 }else{
   kill2(false);
 }
+const navigate = useNavigate();
+  const location = useLocation();
 
+  const handleClick = () => {
+    const currentPath = location.pathname;
+    const basePath = currentPath.split('?')[0];
+    navigate(basePath);
+    setsend(false);
+    const urlParams = new URLSearchParams(window.location.search);
+    const url = "https://vyld-cb-dev-api.vyld.io/api/v1/activity-games/game";
+    const params = new URLSearchParams({
+      activityId: urlParams.get("activityId"),
+    });
+  
+    if(window.location.search){
+    setParams(true);
+    fetch(`${url}?${params}`, {
+      method: "GET",
+      headers: {},
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        
+        const Data_coming = data.data;
+        console.log(Data_coming);
+        setmessage(Data_coming.message);
+        settopic(Data_coming.reqD[0].topicArea);
+        setanswer(Data_coming.reqD[1].topic);
+        setemoji(Data_coming.reqD[2].Emoji);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    }else{
+      setParams(false);
+      fetch(`${url}`, {
+        method: "GET",
+        headers: {},
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          
+          const Data_coming = data.data;
+          console.log(Data_coming);
+          setmessage(Data_coming.message);
+          settopic(Data_coming.reqD[0].topicArea);
+          setanswer(Data_coming.reqD[1].topic);
+          setemoji(Data_coming.reqD[2].Emoji);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
+  };
       
   return (
     <div className={`guess_main_container ${send?'answer_box':''}`}>
@@ -27,7 +91,7 @@ if(emojis[0].length>15){
       </div>
       </div>
       <><div className="guess_heading">{topic}</div>
-      {!send &&<div className={`${Kill3? "left-random":"top-random"} random`}><button><svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {!send && !params &&<div className={`random`}><button ><svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="16.5" cy="16.5518" r="16" fill="#0E1928" fill-opacity="0.2"/>
       <path d="M23.8774 12.3085C23.6209 11.8631 23.2507 11.4839 22.7926 11.2181C22.7908 11.2162 22.7889 11.2162 22.7871 11.2145L17.7314 8.29535C17.7241 8.29168 17.7186 8.28801 17.7113 8.28434C16.7914 7.76396 15.6626 7.76762 14.75 8.30089L10.266 10.9066L10.2239 10.9304C9.7658 11.1961 9.39747 11.5717 9.14276 12.0153C8.89172 12.4459 8.75062 12.9425 8.74329 13.4573V13.494L8.72681 19.3029V19.3138C8.72681 20.3693 9.28936 21.346 10.2001 21.8792C10.2056 21.883 10.2092 21.8848 10.2147 21.8884L11.6001 22.6873L15.2704 24.8056C15.7322 25.0732 16.249 25.2052 16.7639 25.2052C17.2788 25.2033 17.7919 25.0677 18.2518 24.802L22.778 22.1724C22.7798 22.1706 22.7816 22.1706 22.7834 22.1687C23.6923 21.6374 24.2549 20.6643 24.2567 19.6089L24.2732 13.8V13.789C24.2732 13.2613 24.1321 12.7519 23.8774 12.3085Z" fill="white"/>
       <path d="M16.5101 10.8857C15.8015 10.8857 15.2271 11.25 15.2271 11.6993C15.2271 12.1486 15.8015 12.5128 16.5101 12.5128C17.2186 12.5128 17.793 12.1486 17.793 11.6993C17.793 11.25 17.2186 10.8857 16.5101 10.8857Z" fill="#0E1928"/>
@@ -35,7 +99,9 @@ if(emojis[0].length>15){
       <path d="M13.422 17.0685C13.8237 16.8675 14.3852 17.1753 14.676 17.7563C14.9668 18.3373 14.8768 18.9713 14.4751 19.1723C14.0733 19.3735 13.5118 19.0656 13.221 18.4847C12.9302 17.9037 13.0201 17.2697 13.422 17.0685ZM10.6713 18.9723C11.0731 18.7712 11.6345 19.079 11.9253 19.6601C12.2162 20.241 12.1262 20.875 11.7245 21.0761C11.3227 21.2772 10.7612 20.9693 10.4704 20.3884C10.1796 19.8074 10.2695 19.1734 10.6713 18.9723ZM10.7809 15.9551C11.1826 15.754 11.7441 16.0619 12.0349 16.6429C12.3257 17.2238 12.2357 17.8578 11.834 18.0589C11.4322 18.26 10.8707 17.9522 10.5799 17.3713C10.2891 16.7902 10.3791 16.1562 10.7809 15.9551ZM13.1675 20.186C13.5692 19.9849 14.1307 20.2928 14.4215 20.8738C14.7123 21.4547 14.6223 22.0887 14.2206 22.2898C13.8188 22.4909 13.2573 22.1831 12.9665 21.6021C12.6757 21.0211 12.7657 20.3871 13.1675 20.186Z" fill="#0E1928"/>
       </svg>
       </button>
-      </div>}</>
+      </div>}
+</>
+<div className="space-div"></div>
       <div className="guess_symbol"> 
       <div className="emoji-container">
       {emojis.map((emoji, index) => (

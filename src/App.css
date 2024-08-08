@@ -342,10 +342,11 @@ line-height: 100%;
   border: none;
 }
 .random{
-  position: absolute;
-  z-index: 3;
-  top: -8px;
-  left: 95%;
+position: fixed;
+line-height: 100%; 
+z-index: 3;
+margin-top: -108px;
+margin-right: -277px;
 }
 .svg_star{
   margin-right: 40px;
@@ -364,16 +365,16 @@ border-radius: 30px;
 background: var(--Info-Success-Success-Light, #46FF9B);
 z-index: 5;
 position: absolute;
-top:147px;
+top:135px;
 
 }
 ._notsend_width{
   transition: width 0.5s ease-in-out, height 0.5s ease-in-out; 
   width: 350px;
-  height: 166px;
+  height: 163px;
 }
 .answer_box2{
-  top: 129px !important;
+  top: 117px !important;
 }
 ._send_width{
   transition: width 0.5s ease-in-out, height 0.5s ease-in-out; 
@@ -654,6 +655,8 @@ line-height: 120%;
   z-index: 3;
 }
 .guess_heading{
+  position: fixed;
+  margin-top: -108px;
   z-index: 3;
   border-radius: 30px;
 background: var(--Light-Light--100, #FFF);
@@ -662,7 +665,7 @@ color: var(--Dark-Dark--80, #273343);
 text-align: center;
 font-feature-settings: 'clig' off, 'liga' off;
 font-family: Gilroy;
-font-size: 12px;
+font-size: 14px;
 font-style: normal;
 font-weight: 400;
 line-height: 100%; 
