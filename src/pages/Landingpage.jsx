@@ -90,6 +90,15 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
       setLoading(true);
  
   };
+  const openPlayStore = () => {
+    const whatsappUrl = 'whatsapp://send?text=Hello';
+    const playStoreUrl = 'https://wyb.social/get-app/i';
+    window.location.href = whatsappUrl;
+    setTimeout(() => {
+      window.location.href = playStoreUrl;
+    }, 1000);
+ 
+  };
   const backward = () => {
     // console.log("oppp")
     setsend(false);
@@ -427,7 +436,7 @@ useEffect(()=>{
         </button>
       ) : (
       <div className="lower_bottom_buttons">
-          <button className="Create_Own">Create your own</button>
+          <button className="Create_Own" onClick={()=>openPlayStore()}>Create your own</button>
         {CF &&<button className="SpotPage_Submit" onClick={() => console.log("share")}>
           <p>Challenge friends!</p>
         </button> }
