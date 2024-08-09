@@ -64,28 +64,28 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
       });
     }else{
       setParams(false);
-      // fetch(`${url}`, {
-      //   method: "GET",
-      //   headers: {},
-      // })
-      //   .then((response) => {
-      //     if (!response.ok) {
-      //       throw new Error("Network response was not ok");
-      //     }
-      //     return response.json();
-      //   })
-      //   .then((data) => {
+      fetch(`${url}`, {
+        method: "GET",
+        headers: {},
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
           
-      //     const Data_coming = data.data;
-      //     console.log(Data_coming);
-          setmessage("Random");
-          settopic("MOVIE");
-          setanswer("723456");
-          setemoji("💍");
-        // })
-        // .catch((error) => {
-        //   console.error("Error:", error);
-        // });
+          const Data_coming = data.data;
+        console.log(Data_coming);
+        setmessage(Data_coming.ActD.message);
+        settopic(Data_coming.ActD.reqD[0].topicArea);
+        setanswer(Data_coming.ActD.reqD[1].topic);
+        setemoji(Data_coming.ActD.reqD[2].Emoji);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
     }
       setLoading(true);
  
@@ -358,6 +358,7 @@ useEffect(()=>{
         <p className="Emoji_charades">Emoji charades</p>
       </div>
       <GuessBox
+      handleClick={handleClick}
       params={Params}
       Single={Single}
       Kill3={Kill2}
