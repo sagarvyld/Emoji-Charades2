@@ -102,7 +102,7 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
     if(limit>0){
       console.log(limit);
     }else{
-      // openPlayStore();
+      openPlayStore();
     }
   },[limit])
   const openPlayStore = () => {
