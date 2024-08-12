@@ -21,12 +21,13 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
   const [data_it, setdata_it] = useState(0);
   const [Params,setParams]=useState(false);
   const [firsttime,setfirsttime]=useState(0);
-
+  const [limit,setlimit]=useState(3);
   // console.log(Kill2);
   const navigate = useNavigate();
   const location = useLocation();
 
   const handleClick = () => {
+   
     const currentPath = location.pathname;
     const basePath = currentPath.split('?')[0];
     navigate(basePath);
@@ -88,15 +89,25 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
         });
     }
       setLoading(true);
- 
+      fetch("https://vyld-cb-dev-api.vyld.io/api/v1/activity-games/guestUser/check", {
+        method: "POST",
+        credentials: "include", 
+      })
+        .then(response => response.json())
+        .then(data => setlimit(data.data.result.limit))
+        .catch(error => console.error("Error:", error));
+  
   };
+  useEffect(()=>{
+    if(limit>0){
+      console.log(limit);
+    }else{
+      openPlayStore();
+    }
+  },[limit])
   const openPlayStore = () => {
-    const whatsappUrl = 'whatsapp://send?text=Hello';
     const playStoreUrl = 'https://wyb.social/get-app/i';
-    window.location.href = whatsappUrl;
-    setTimeout(() => {
-      window.location.href = playStoreUrl;
-    }, 1000);
+    window.location.href = playStoreUrl
  
   };
   const backward = () => {
@@ -166,7 +177,13 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
         });
     }
       setLoading(true);
- 
+      fetch("https://vyld-cb-dev-api.vyld.io/api/v1/activity-games/guestUser/check", {
+        method: "POST",
+        credentials: "include", 
+      })  .then(response => response.json())
+      .then(data => setlimit(data.data.result.limit))
+      .catch(error => console.error("Error:", error));
+   
   }, []);
 
   const [isEmpty, setIsEmpty] = useState(true);
@@ -229,20 +246,7 @@ useEffect(()=>{
     const staging_url = "https://vyld-cb-dev-api.vyld.io";
     const url = `${staging_url}/api/v1/activity-games/game-response`;
 
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        // console.log(result);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+   
   };
 
   useEffect(() => {
