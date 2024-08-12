@@ -102,7 +102,7 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
     if(limit>0){
       console.log(limit);
     }else{
-      openPlayStore();
+      // openPlayStore();
     }
   },[limit])
   const openPlayStore = () => {
@@ -115,6 +115,10 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
     setsend(false);
     setIsEmpty(true);
   };
+  const back_it=()=>{
+    window.location.href="https://emojichactivitywybtestingvv2.netlify.app/";
+    setIsEmpty(true);
+  }
   const triggerConfetti = () => {
     setShowConfetti(true);
     setTimeout(() => setShowConfetti(false), 2500);
@@ -285,7 +289,7 @@ useEffect(()=>{
       }
     {showConfetti && send && <Confetti />}
         <div className="upper_buttons">
-          <button className="back_button" onClick={()=>send && backward()}>
+          <button className="back_button" onClick={()=>send ? backward():back_it()}>
             {!send?<svg
               width="24"
               height="24"
