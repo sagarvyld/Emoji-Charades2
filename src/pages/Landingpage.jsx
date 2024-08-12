@@ -102,13 +102,13 @@ const Landingpage = ({ skip, setskip , Single , Share , CF }) => {
     if(limit>0){
       console.log(limit);
     }else{
-      openPlayStore();
+    openPlayStore();
     }
   },[limit])
   const openPlayStore = () => {
-    const playStoreUrl = 'https://wyb.social/get-app/i';
-    window.location.href = playStoreUrl
- 
+
+window.location.replace("https://wyb.social/get-app/i");
+
   };
   const backward = () => {
     // console.log("oppp")
